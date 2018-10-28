@@ -22,8 +22,10 @@ class SimpleBindingAdapter(private val items: MutableList<Movie>/*, private var 
     }
 
     override fun onBindViewHolder(holder: AdapterViewHolder, position: Int) {
-        val model = items[position]
-        binding.model
+        val movie = items[position]
+        //binding.model = movie
+        binding.setVariable(BR.model ,movie)
+        binding.executePendingBindings()
         /*holder.itemView.setOnClickListener({
             if (listener != null)
                 listener!!.onItemSelected(model)
