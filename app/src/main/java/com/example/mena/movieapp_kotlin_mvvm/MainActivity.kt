@@ -4,6 +4,7 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 //import com.example.mena.movieapp_kotlin_mvvm.SimpleBindingAdapter.ItemClickListener
 import com.example.mena.movieapp_kotlin_mvvm.models.Movie
@@ -22,14 +23,14 @@ class MainActivity : AppCompatActivity()/* , ItemClickListener<String>*/ {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initViewModel()
-        initRecyclerView()
         observeViewModelData()
+
     }
 
     private fun initRecyclerView() {
         adapter = SimpleBindingAdapter(moviesData)
         rcl_movie.setAdapter(adapter)
-        rcl_movie.setLayoutManager(LinearLayoutManager(this))
+        rcl_movie.setLayoutManager(GridLayoutManager(this ,2))
     }
 
     fun initViewModel()
@@ -49,6 +50,7 @@ class MainActivity : AppCompatActivity()/* , ItemClickListener<String>*/ {
 
     fun bindMoviesData(moviesData : MutableList<Movie>){
         this.moviesData = moviesData
+        initRecyclerView()
     }
 
     override fun onStart() {

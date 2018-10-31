@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.example.mena.movieapp_kotlin_mvvm.databinding.MovieItemBinding
 import com.example.mena.movieapp_kotlin_mvvm.models.Movie
 
-class SimpleBindingAdapter(private val items: MutableList<Movie>/*, private var listener: ItemClickListener<Movie>?*/) : RecyclerView.Adapter<SimpleBindingAdapter.AdapterViewHolder>() {
+class SimpleBindingAdapter(private val items: MutableList<Movie>) : RecyclerView.Adapter<SimpleBindingAdapter.AdapterViewHolder>() {
 
     private lateinit var binding: MovieItemBinding
 
@@ -23,13 +23,8 @@ class SimpleBindingAdapter(private val items: MutableList<Movie>/*, private var 
 
     override fun onBindViewHolder(holder: AdapterViewHolder, position: Int) {
         val movie = items[position]
-        //binding.model = movie
-        binding.setVariable(BR.model ,movie)
+        binding.model = movie
         binding.executePendingBindings()
-        /*holder.itemView.setOnClickListener({
-            if (listener != null)
-                listener!!.onItemSelected(model)
-        })*/
     }
 
     fun clear() {

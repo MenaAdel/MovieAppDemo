@@ -1,5 +1,6 @@
 package com.example.mena.movieapp_kotlin_mvvm.models
 
+import android.widget.ImageView
 import com.google.gson.annotations.SerializedName
 
 class Movie {
